@@ -20,9 +20,12 @@ use App\Http\Controllers\Admin\SystemInformationController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.auth.login');
-});
+// Route::get('/', function () {
+//     return view('admin.auth.login');
+// });
+
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'mainLogin'])->name('mainLogin');
 
 Route::get('/clear', function() {
     \Illuminate\Support\Facades\Artisan::call('cache:clear');

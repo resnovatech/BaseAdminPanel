@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Redirect;
 class LoginController extends Controller
 {
 
@@ -16,11 +17,11 @@ class LoginController extends Controller
 
     public function index(){
 
-        if (Auth::guard('admin')->guest()) {
-            return view('admin.auth.login');
+        if (Auth::guard('admin')->check()) {
 
+            return Redirect::to('/admin');
        } else {
-        return Redirect::to('/admin');
+        return view('admin.auth.login');
        }
 
 
